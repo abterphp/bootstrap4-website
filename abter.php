@@ -1,7 +1,7 @@
 <?php
 
-namespace AbterPhp\Bootstrap4Website;
-
+use AbterPhp\Bootstrap4Website\Bootstrappers;
+use AbterPhp\Bootstrap4Website\Events;
 use AbterPhp\Framework\Constant\Module;
 use AbterPhp\Website\Constant\Event as WebsiteEvent;
 

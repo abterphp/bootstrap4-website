@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87714a022d72878291ba6cd875120658",
+    "content-hash": "343a14591f7026caa479bd810cb5577e",
     "packages": [
         {
             "name": "abterphp/admin",
