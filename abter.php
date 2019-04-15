@@ -18,4 +18,5 @@ return [
             sprintf('%s@handle', Events\Listeners\WebsiteDecorator::class),
         ],
     ],
+    Module::RESOURCE_PATH    => realpath(__DIR__ . '/resources'),
 ];
