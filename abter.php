@@ -2,6 +2,7 @@
 
 use AbterPhp\Bootstrap4Website\Bootstrappers;
 use AbterPhp\Bootstrap4Website\Events;
+use AbterPhp\Framework\Constant\Event;
 use AbterPhp\Framework\Constant\Module;
 use AbterPhp\Framework\Constant\Priorities;
 use AbterPhp\Website\Constant\Event as WebsiteEvent;
@@ -17,6 +18,10 @@ return [
         WebsiteEvent::WEBSITE_READY => [
             /** @see \AbterPhp\Bootstrap4Website\Events\Listeners\WebsiteDecorator::handle */
             Priorities::NORMAL => [sprintf('%s@handle', Events\Listeners\WebsiteDecorator::class)],
+        ],
+        Event::FORM_READY           => [
+            /** @see \AbterPhp\Bootstrap4Website\Events\Listeners\FormDecorator::handle */
+            Priorities::EXTREME_LOW => [sprintf('%s@handle', Events\Listeners\FormDecorator::class)],
         ],
     ],
     Module::RESOURCE_PATH      => realpath(__DIR__ . '/resources'),
