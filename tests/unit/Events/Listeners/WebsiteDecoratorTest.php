@@ -17,7 +17,7 @@ class WebsiteDecoratorTest extends TestCase
     const HEADER = 'foo';
     const FOOTER = 'bar';
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

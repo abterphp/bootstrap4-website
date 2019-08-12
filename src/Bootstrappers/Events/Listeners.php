@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace AbterPhp\Bootstrap4Website\Bootstrappers\Events;
 
 use AbterPhp\Bootstrap4Website\Events\Listeners\WebsiteDecorator;
-use Opulence\Framework\Configuration\Config;
 use Opulence\Ioc\Bootstrappers\Bootstrapper;
 use Opulence\Ioc\Bootstrappers\ILazyBootstrapper;
 use Opulence\Ioc\IContainer;
