@@ -15,11 +15,11 @@ class FormDecorator
     /**
      * FormDecorator constructor.
      *
-     * @param Form    $formDecorator
+     * @param Form $formDecorator
      */
     public function __construct(Form $formDecorator)
     {
-        $this->formDecorator    = $formDecorator;
+        $this->formDecorator = $formDecorator;
     }
 
     /**

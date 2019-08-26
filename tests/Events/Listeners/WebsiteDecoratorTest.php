@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class WebsiteDecoratorTest extends TestCase
 {
-    /** @var WebsiteDecorator System Under Test */
+    /** @var WebsiteDecorator - System Under Test */
     protected $sut;
 
     const HEADER = 'foo';
@@ -26,23 +26,7 @@ class WebsiteDecoratorTest extends TestCase
 
     public function testHandleWithoutSetVars()
     {
-        $viewMock = $this->getMockBuilder(IView::class)
-            ->setMethods(
-                [
-                    'getContents',
-                    'getDelimiters',
-                    'getPath',
-                    'getVar',
-                    'getVars',
-                    'hasVar',
-                    'setContents',
-                    'setDelimiters',
-                    'setPath',
-                    'setVar',
-                    'setVars',
-                ]
-            )
-            ->getMock();
+        $viewMock = $this->createMock(IView::class);
 
         $viewMock->expects($this->at(0))->method('hasVar')->willReturn(false);
         $viewMock->expects($this->at(1))->method('hasVar')->willReturn(false);
@@ -51,10 +35,7 @@ class WebsiteDecoratorTest extends TestCase
         $viewMock->expects($this->at(3))->method('setVar')->with('preFooter', static::FOOTER);
 
         /** @var WebsiteReady|MockObject $stubWebsiteReady */
-        $stubWebsiteReady = $this->getMockBuilder(WebsiteReady::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['getView'])
-            ->getMock();
+        $stubWebsiteReady = $this->createMock(WebsiteReady::class);
 
         $stubWebsiteReady->expects($this->any())->method('getView')->willReturn($viewMock);
 
@@ -66,23 +47,7 @@ class WebsiteDecoratorTest extends TestCase
         $setHeader = 'quix';
         $setFooter = 'baz';
 
-        $viewMock = $this->getMockBuilder(IView::class)
-            ->setMethods(
-                [
-                    'getContents',
-                    'getDelimiters',
-                    'getPath',
-                    'getVar',
-                    'getVars',
-                    'hasVar',
-                    'setContents',
-                    'setDelimiters',
-                    'setPath',
-                    'setVar',
-                    'setVars',
-                ]
-            )
-            ->getMock();
+        $viewMock = $this->createMock(IView::class);
 
         $viewMock->expects($this->at(0))->method('hasVar')->willReturn(true);
         $viewMock->expects($this->at(1))->method('getVar')->with('preHeader')->willReturn($setHeader);
@@ -94,10 +59,7 @@ class WebsiteDecoratorTest extends TestCase
         $viewMock->expects($this->at(5))->method('setVar')->with('preFooter', static::FOOTER . $setFooter);
 
         /** @var WebsiteReady|MockObject $stubWebsiteReady */
-        $stubWebsiteReady = $this->getMockBuilder(WebsiteReady::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['getView'])
-            ->getMock();
+        $stubWebsiteReady = $this->createMock(WebsiteReady::class);
 
         $stubWebsiteReady->expects($this->any())->method('getView')->willReturn($viewMock);
 
