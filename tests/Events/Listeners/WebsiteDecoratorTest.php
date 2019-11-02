@@ -11,11 +11,11 @@ use PHPUnit\Framework\TestCase;
 
 class WebsiteDecoratorTest extends TestCase
 {
+    public const HEADER = 'foo';
+    public const FOOTER = 'bar';
+
     /** @var WebsiteDecorator - System Under Test */
     protected $sut;
-
-    const HEADER = 'foo';
-    const FOOTER = 'bar';
 
     public function setUp(): void
     {
