@@ -27,12 +27,11 @@ class WebsiteDecoratorTest extends TestCase
     public function testHandleWithoutSetVars()
     {
         $viewMock = $this->createMock(IView::class);
-
-        $viewMock->expects($this->at(0))->method('hasVar')->willReturn(false);
-        $viewMock->expects($this->at(1))->method('hasVar')->willReturn(false);
-
-        $viewMock->expects($this->at(2))->method('setVar')->with('preHeader', static::HEADER);
-        $viewMock->expects($this->at(3))->method('setVar')->with('preFooter', static::FOOTER);
+        $viewMock->expects($this->exactly(2))->method('hasVar')->willReturn(false);
+        $viewMock
+            ->expects($this->exactly(2))
+            ->method('setVar')
+            ->withConsecutive(['preHeader', static::HEADER], ['preFooter', static::FOOTER]);
 
         /** @var WebsiteReady|MockObject $stubWebsiteReady */
         $stubWebsiteReady = $this->createMock(WebsiteReady::class);
@@ -49,14 +48,16 @@ class WebsiteDecoratorTest extends TestCase
 
         $viewMock = $this->createMock(IView::class);
 
-        $viewMock->expects($this->at(0))->method('hasVar')->willReturn(true);
-        $viewMock->expects($this->at(1))->method('getVar')->with('preHeader')->willReturn($setHeader);
-
-        $viewMock->expects($this->at(2))->method('hasVar')->willReturn(true);
-        $viewMock->expects($this->at(3))->method('getVar')->with('preFooter')->willReturn($setFooter);
-
-        $viewMock->expects($this->at(4))->method('setVar')->with('preHeader', static::HEADER . $setHeader);
-        $viewMock->expects($this->at(5))->method('setVar')->with('preFooter', static::FOOTER . $setFooter);
+        $viewMock->expects($this->exactly(2))->method('hasVar')->willReturn(true);
+        $viewMock
+            ->expects($this->exactly(2))
+            ->method('getVar')
+            ->withConsecutive(['preHeader'], ['preFooter'])
+            ->willReturnOnConsecutiveCalls($setHeader, $setFooter);
+        $viewMock
+            ->expects($this->exactly(2))
+            ->method('setVar')
+            ->withConsecutive(['preHeader', static::HEADER . $setHeader], ['preFooter', static::FOOTER . $setFooter]);
 
         /** @var WebsiteReady|MockObject $stubWebsiteReady */
         $stubWebsiteReady = $this->createMock(WebsiteReady::class);
